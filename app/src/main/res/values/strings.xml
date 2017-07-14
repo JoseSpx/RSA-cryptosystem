@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">RSAcriptosystem</string>
+    <string name="app_name">RSA</string>
     <string name="rsa">RSA</string>
     <string name="cryptosystem">CRYPTOSYSTEM</string>
     <string name="manual">MANUAL</string>
     <string name="automatico">AUTOMATICO</string>
+    <string name="logo">logo</string>
 </resources>
