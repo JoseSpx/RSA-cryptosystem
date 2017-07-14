@@ -5,4 +5,10 @@
     <string name="manual">MANUAL</string>
     <string name="automatico">AUTOMATICO</string>
     <string name="logo">logo</string>
+    <string name="ingrese_datos">Datos</string>
+    <string name="P">P</string>
+    <string name="Q">Q</string>
+    <string name="E">E</string>
+    <string name="aceptar">ACEPTAR</string>
+    <string name="cancelar">CANCELAR</string>
 </resources>

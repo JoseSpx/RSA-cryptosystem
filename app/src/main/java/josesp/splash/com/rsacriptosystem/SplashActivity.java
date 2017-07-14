@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity{
 
-    private final int SCREEN_DISPLAY_DELAY = 5000;
+    private final int SCREEN_DISPLAY_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
