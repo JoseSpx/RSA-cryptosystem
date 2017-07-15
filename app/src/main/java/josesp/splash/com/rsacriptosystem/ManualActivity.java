@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import josesp.splash.com.rsacriptosystem.model.ExtendedEuclideanAlgorithm;
+import josesp.splash.com.rsacriptosystem.model.InverseMultiplication;
+import josesp.splash.com.rsacriptosystem.model.Nodo;
+
 public class ManualActivity extends AppCompatActivity {
 
     @Override
@@ -39,7 +43,7 @@ public class ManualActivity extends AppCompatActivity {
         int phi = (p - 1) * (q - 1);
 
         Nodo nodo = ExtendedEuclideanAlgorithm.applyExtendedEuclideanAlgorithm(e,phi);
-        if(nodo.getD() == 1 || e > phi || e < 1){
+        if(nodo.getD() != 1 || e > phi || e < 1){
             Toast toast = Toast.makeText(this,"E no es válido",Toast.LENGTH_SHORT);
             toast.show();
             return;
@@ -50,7 +54,16 @@ public class ManualActivity extends AppCompatActivity {
         return;
         */
 
+        int d = InverseMultiplication.getInverse(phi, e);
+        if( d == -1){
+            Toast toast = Toast.makeText(this,"No existe inverso multiplicativo",Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
 
+        Toast toast = Toast.makeText(this,"n = "+n+"  phi = "+phi+ " gcd : "+nodo.getD() + "d = "+d,Toast.LENGTH_SHORT);
+        toast.show();
+        return;
 
     }
 
@@ -59,11 +72,5 @@ public class ManualActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-    public int gcd(int a, int b){
-
-        return 0;
-    }
-
 
 }

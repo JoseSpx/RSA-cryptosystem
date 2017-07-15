@@ -1,6 +1,4 @@
-package josesp.splash.com.rsacriptosystem;
-
-
+package josesp.splash.com.rsacriptosystem.model;
 
 public class Nodo {
     private int d;

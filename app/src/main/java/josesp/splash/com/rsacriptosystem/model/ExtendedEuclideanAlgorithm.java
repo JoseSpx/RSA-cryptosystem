@@ -1,4 +1,4 @@
-package josesp.splash.com.rsacriptosystem;
+package josesp.splash.com.rsacriptosystem.model;
 
 public class ExtendedEuclideanAlgorithm {
 
@@ -29,7 +29,6 @@ public class ExtendedEuclideanAlgorithm {
             int c = 0;
             while(b > 0){
                 c++;
-                System.out.println("------Paso : " + c);
                 q = a / b;
                 r = a - (b * q);
                 x = x2 - q * x1;
@@ -40,9 +39,6 @@ public class ExtendedEuclideanAlgorithm {
                 x1 = x;
                 y2 = y1;
                 y1 = y;
-                System.out.println("q : "+ q +"  r : "+ r + " x : "
-                        + x + "  y : "+ y + " a : "+ a + " b : "+ b
-                        + " x2 : " + x2 + " x1 : "+ x1 + " y2 : "+ y2 + " y1 : " + y1);
             }
             nodo.setD(a);
             nodo.setX(x2);
@@ -52,11 +48,6 @@ public class ExtendedEuclideanAlgorithm {
         return nodo;
     }
 
-    public static Boolean comprobarPropiedad(int a, int b, int d){
-        int number1 = (int)Math.pow(2,d) - 1;
-        Nodo nodo = applyExtendedEuclideanAlgorithm((int)Math.pow(2,a) - 1,(int)Math.pow(2,b) - 1);
-        return number1 == nodo.getD();
-    }
 
 }
 
