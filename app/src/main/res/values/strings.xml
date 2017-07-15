@@ -11,4 +11,12 @@
     <string name="E">E</string>
     <string name="aceptar">ACEPTAR</string>
     <string name="cancelar">CANCELAR</string>
+    <string name="clavePublica">Claves Públicas</string>
+    <string name="claveSecreta">Clave Secreta</string>
+    <string name="claves">Claves</string>
+    <string name="n">n :</string>
+    <string name="e">e : </string>
+    <string name="d">d : </string>
+    <string name="createMessage">Crear Mensaje</string>
+    <string name="exit">Salir</string>
 </resources>

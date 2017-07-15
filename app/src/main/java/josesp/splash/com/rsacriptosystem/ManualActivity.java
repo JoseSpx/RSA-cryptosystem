@@ -55,10 +55,15 @@ public class ManualActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-
+        /*
         Toast toast = Toast.makeText(this,"n = "+n+"  phi = "+phi+"  d = "+d,Toast.LENGTH_LONG);
         toast.show();
-        return;
+        */
+        Intent intent = new Intent(this,KeysActivity.class);
+        intent.putExtra("n",n);
+        intent.putExtra("e",e);
+        intent.putExtra("d",d);
+        startActivity(intent);
 
     }
 

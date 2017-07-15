@@ -5,7 +5,8 @@
     <color name="colorAccent">#42a5f5</color>
     <color name="colorDark">#263238</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="blue4">#64b5f6</color>
+    <color name="colorBlueLight">#64b5f6</color>
     <color name="colorBackground">#1565C0</color>
     <color name="colorTextButton">#42a5f5</color>
+    <color name="colorBar">#1e88e5</color>
 </resources>
