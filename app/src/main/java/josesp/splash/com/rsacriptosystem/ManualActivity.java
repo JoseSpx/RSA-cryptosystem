@@ -48,11 +48,6 @@ public class ManualActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        /*
-        Toast toast = Toast.makeText(this,"p = "+p +"  q = "+q+"  e = "+e+"  n = "+n+"  phi = "+phi+ " D : "+nodo.getD(),Toast.LENGTH_SHORT);
-        toast.show();
-        return;
-        */
 
         int d = InverseMultiplication.getInverse(phi, e);
         if( d == -1){
@@ -61,7 +56,7 @@ public class ManualActivity extends AppCompatActivity {
             return;
         }
 
-        Toast toast = Toast.makeText(this,"n = "+n+"  phi = "+phi+ " gcd : "+nodo.getD() + "d = "+d,Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this,"n = "+n+"  phi = "+phi+"  d = "+d,Toast.LENGTH_LONG);
         toast.show();
         return;
 
