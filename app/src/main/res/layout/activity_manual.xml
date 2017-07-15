@@ -70,31 +70,30 @@
         android:layout_marginStart="35dp" />
 
     <Button
-        android:id="@+id/btnAcept"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="201dp"
-        android:layout_marginEnd="49dp"
+        android:id="@+id/btnAccept"
+        android:layout_width="140dp"
+        android:layout_height="47dp"
+        android:background="@drawable/button_manual"
+        android:onClick="btnAccept_onClick"
         android:text="@string/aceptar"
         android:textColor="@color/colorWhite"
-        android:background="@drawable/button_manual"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="201dp" />
 
     <Button
         android:id="@+id/btnCancelar"
-        android:background="@drawable/button_manual"
-        android:textColor="@color/colorWhite"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="201dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="35dp"
+        android:background="@drawable/button_manual"
+        android:onClick="btnCancel_onClick"
         android:text="@string/cancelar"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btnAcept" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayoutP"
