@@ -22,4 +22,8 @@
     <string name="barMensaje">Mensaje</string>
     <string name="Escriba_el_mensaje">Escriba el mensaje</string>
     <string name="encode">ENCRIPTAR</string>
+    <string name="encrypt">Encriptacion</string>
+    <string name="blocks">Texto en Bloques</string>
+    <string name="textoEncriptado">Texto Encriptado</string>
+    <string name="descifrar">Descifrar</string>
 </resources>

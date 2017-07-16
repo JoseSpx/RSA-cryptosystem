@@ -55,7 +55,10 @@ public class MessageActivity extends AppCompatActivity {
         ArrayList listOfBlocks = getListOfBlocks(message);
         ArrayList textEncrypted = getTextEncrypted(listOfBlocks);
 
-        //Intent intent = new Intent(this,);
+        Intent intent = new Intent(this, EncryptedActivity.class);
+        intent.putStringArrayListExtra("listOfBlocks",listOfBlocks);
+        intent.putStringArrayListExtra("textEncrypted",textEncrypted);
+        startActivity(intent);
 
     }
 
@@ -106,13 +109,32 @@ public class MessageActivity extends AppCompatActivity {
             listOfTwoBlocks.add(list.get(counter)+list.get(++counter));
         }
 
-        ArrayList<String> listEncrypted = new ArrayList<>();
+        ArrayList<String> listSemiEncrypted = new ArrayList<>();
         int number;
         int exponentitation;
         for(int i = 0; i < listOfTwoBlocks.size() ; i++){
             number = Integer.valueOf(listOfTwoBlocks.get(i));
             exponentitation = Exponentation.getExponentation(number,e,n);
-            listEncrypted.add(convertToLenghtPair(exponentitation));
+            listSemiEncrypted.add(convertToLenghtPair(exponentitation));
+        }
+
+        ArrayList<String> listEncrypted = new ArrayList<>();
+        String aux;
+        String a;
+        String b;
+        int j;
+        for(int i = 0; i < listSemiEncrypted.size() ; i++){
+            aux = listSemiEncrypted.get(i);
+            if(aux.length() > 2){
+                for(j = 0; j < aux.length() ; j = j+2){
+                    counter = j;
+                    a = String.valueOf(aux.charAt(counter));
+                    b = String.valueOf(aux.charAt(++counter));
+                    listEncrypted.add(a+b);
+                }
+            }else{
+                listEncrypted.add(aux);
+            }
         }
         return listEncrypted;
     }
