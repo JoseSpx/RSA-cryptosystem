@@ -19,4 +19,7 @@
     <string name="d">d : </string>
     <string name="createMessage">Crear Mensaje</string>
     <string name="exit">Salir</string>
+    <string name="barMensaje">Mensaje</string>
+    <string name="Escriba_el_mensaje">Escriba el mensaje</string>
+    <string name="encode">ENCRIPTAR</string>
 </resources>
