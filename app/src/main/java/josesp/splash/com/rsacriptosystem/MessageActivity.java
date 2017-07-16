@@ -1,6 +1,7 @@
 package josesp.splash.com.rsacriptosystem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -12,20 +13,31 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import josesp.splash.com.rsacriptosystem.model.Exponentation;
+
 public class MessageActivity extends AppCompatActivity {
 
     private ArrayList<String> characters = new ArrayList<>(Arrays.asList(
-            "?",
+            "?"," ",
             "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
             "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-            ".","_","-","\n"," ",
+            ".","_","-","\n",
             "1","2","3","4","5","6","7","8","9","0"
     ));
+
+    private int n;
+    private int d;
+    private int e;
 
     @Override
     protected void onCreate(Bundle savedInstaceState){
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_create_message);
+
+        Bundle bundle = getIntent().getExtras();
+        n = Integer.valueOf(bundle.getString("n"));
+        d = Integer.valueOf(bundle.getString("d"));
+        e = Integer.valueOf(bundle.getString("e"));
     }
 
     public void btnEncode_onclick(View view){
@@ -39,20 +51,12 @@ public class MessageActivity extends AppCompatActivity {
         }
         enableUI(false);
         (findViewById(R.id.progressBarMessage)).setVisibility(View.VISIBLE);
-        int i;
-        int code;
-        String newCode;
-        char c;
-        ArrayList<String> list = new ArrayList<>();
-        for(i = 0; i < message.length(); i++){
-            code = getCode(message.charAt(i)+"");
-            if(code == -1) {
-                list.add("00");
-            }else{
-                newCode = convertToLenght2(code);
-                list.add(newCode);
-            }
-        }
+
+        ArrayList listOfBlocks = getListOfBlocks(message);
+        ArrayList textEncrypted = getTextEncrypted(listOfBlocks);
+
+        //Intent intent = new Intent(this,);
+
     }
 
     public int getCode(String a){
@@ -71,6 +75,54 @@ public class MessageActivity extends AppCompatActivity {
             return n;
         }
         return "0" + n;
+    }
+
+    public ArrayList<String> getListOfBlocks(String message){
+        int i;
+        int code;
+        String newCode;
+        ArrayList<String> list = new ArrayList<>();
+        for(i = 0; i < message.length(); i++){
+            code = getCode(message.charAt(i)+"");
+            if(code == -1) {
+                list.add("00");
+            }else{
+                newCode = convertToLenght2(code);
+                list.add(newCode);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<String> getTextEncrypted(ArrayList<String> list){
+        int size = list.size();
+        if(size %  2 == 1){
+            list.add("01"); // espacio vacio
+        }
+        int counter;
+        ArrayList<String> listOfTwoBlocks = new ArrayList<>();
+        for(int i = 0; i < list.size() ; i = i + 2){
+            counter = i;
+            listOfTwoBlocks.add(list.get(counter)+list.get(++counter));
+        }
+
+        ArrayList<String> listEncrypted = new ArrayList<>();
+        int number;
+        int exponentitation;
+        for(int i = 0; i < listOfTwoBlocks.size() ; i++){
+            number = Integer.valueOf(listOfTwoBlocks.get(i));
+            exponentitation = Exponentation.getExponentation(number,e,n);
+            listEncrypted.add(convertToLenghtPair(exponentitation));
+        }
+        return listEncrypted;
+    }
+
+    public String convertToLenghtPair(int number){
+        String n = String.valueOf(number);
+        if(n.length() % 2 == 1){
+            return "0"+n;
+        }
+        return n;
     }
 
     public void closeKeyboard(){

@@ -4,25 +4,16 @@ import java.util.ArrayList;
 
 public class Exponentation {
 
-    /*
-    public static void main(String[] args) {
-        int n = 7087051;
-        int a = 111;
-        int k = 1111;
-        
+    public static int getExponentation(int a, int k, int n){ // base, exponente , Z
         int binario = getBinary(k);
         ArrayList<Integer> arregloK = convertToArray(binario);
-        System.out.println(arregloK);
-        System.out.println("El resultado es : " + getExponentation(a, k, arregloK, n));
-    }*/
 
-    public static double getExponentation(int a, int k ,ArrayList<Integer> arregloK,int n){
         int i;
         double A, b;
         int t = arregloK.size() - 1;
         b = 1;
         if(k == 0){
-            return b;
+            return (int)b;
         }
         A = a;
         if(arregloK.get(0) == 1){
@@ -34,10 +25,10 @@ public class Exponentation {
                 b = (A*b) % n;
             }
         }
-        return b;
+        return (int)b;
     }
     
-    public static int getBinary(int numero){
+    private static int getBinary(int numero){
         int exp=0;
         double binario=0;
         int digito;
@@ -50,7 +41,7 @@ public class Exponentation {
         return (int)binario;
     }
     
-    public static ArrayList<Integer> convertToArray(int number){
+    private static ArrayList<Integer> convertToArray(int number){
         String string = String.valueOf(number);
         int size = string.length();
         int i;
