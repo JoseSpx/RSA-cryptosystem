@@ -48,6 +48,7 @@ public class InverseMultiplication {
             if(bigD.mod(bigZ).equals(bigCero)){
                 return i;
             }
+            //System.out.println(i);
         }
 
         return -1;

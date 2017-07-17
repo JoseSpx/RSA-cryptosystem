@@ -76,7 +76,7 @@ public class ManualActivity extends AppCompatActivity {
             e = Integer.parseInt(stringE);
             n = p * q;
             int phi = (p - 1) * (q - 1);
-            Nodo nodo = ExtendedEuclideanAlgorithm.applyExtendedEuclideanAlgorithm(e,phi);
+            Nodo nodo = ExtendedEuclideanAlgorithm.applyExtendedEuclideanAlgorithm(phi,e);
 
             if(nodo.getD() != 1 || e > phi || e < 1){
                 return eInvalid;

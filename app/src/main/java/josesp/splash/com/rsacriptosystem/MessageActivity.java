@@ -18,9 +18,11 @@ import josesp.splash.com.rsacriptosystem.model.Exponentation;
 public class MessageActivity extends AppCompatActivity {
 
     private ArrayList<String> characters = new ArrayList<>(Arrays.asList(
+           //0   1
             "?"," ",
+           //2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27
             "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-            "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+           //28 29  30  31
             ".","_","-","\n",
             "1","2","3","4","5","6","7","8","9","0"
     ));
@@ -38,6 +40,7 @@ public class MessageActivity extends AppCompatActivity {
         n = Integer.valueOf(bundle.getString("n"));
         d = Integer.valueOf(bundle.getString("d"));
         e = Integer.valueOf(bundle.getString("e"));
+        //System.out.println("Carac : - " + characters.get(56));
     }
 
     public void btnEncode_onclick(View view){
@@ -52,12 +55,16 @@ public class MessageActivity extends AppCompatActivity {
         enableUI(false);
         (findViewById(R.id.progressBarMessage)).setVisibility(View.VISIBLE);
 
-        ArrayList listOfBlocks = getListOfBlocks(message);
-        ArrayList textEncrypted = getTextEncrypted(listOfBlocks);
-
+        ArrayList<String> listOfBlocks = getListOfBlocks(message);//recorreArray(listOfBlocks);
+        ArrayList<String> textEncrypted = getTextEncrypted(listOfBlocks);
+        if(listOfBlocks.get(listOfBlocks.size() - 1).equals("1")){
+            listOfBlocks.remove(listOfBlocks.size()-1);
+        }
         Intent intent = new Intent(this, EncryptedActivity.class);
         intent.putStringArrayListExtra("listOfBlocks",listOfBlocks);
         intent.putStringArrayListExtra("textEncrypted",textEncrypted);
+        intent.putExtra("n",n);
+        intent.putExtra("d",d);
         startActivity(intent);
 
     }
@@ -99,6 +106,7 @@ public class MessageActivity extends AppCompatActivity {
 
     public ArrayList<String> getTextEncrypted(ArrayList<String> list){
         int size = list.size();
+        System.out.println("Size : " + size);
         if(size %  2 == 1){
             list.add("01"); // espacio vacio
         }
@@ -117,26 +125,7 @@ public class MessageActivity extends AppCompatActivity {
             exponentitation = Exponentation.getExponentation(number,e,n);
             listSemiEncrypted.add(convertToLenghtPair(exponentitation));
         }
-
-        ArrayList<String> listEncrypted = new ArrayList<>();
-        String aux;
-        String a;
-        String b;
-        int j;
-        for(int i = 0; i < listSemiEncrypted.size() ; i++){
-            aux = listSemiEncrypted.get(i);
-            if(aux.length() > 2){
-                for(j = 0; j < aux.length() ; j = j+2){
-                    counter = j;
-                    a = String.valueOf(aux.charAt(counter));
-                    b = String.valueOf(aux.charAt(++counter));
-                    listEncrypted.add(a+b);
-                }
-            }else{
-                listEncrypted.add(aux);
-            }
-        }
-        return listEncrypted;
+        return listSemiEncrypted;
     }
 
     public String convertToLenghtPair(int number){
@@ -155,6 +144,12 @@ public class MessageActivity extends AppCompatActivity {
     public void enableUI(Boolean bool){
         (findViewById(R.id.txtMessage)).setEnabled(bool);
         (findViewById(R.id.btnEncode)).setEnabled(bool);
+    }
+
+    public void recorreArray(ArrayList<String> list){
+        for(String a : list){
+            System.out.println(a);
+        }
     }
 
 }

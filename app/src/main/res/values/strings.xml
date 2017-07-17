@@ -26,4 +26,6 @@
     <string name="blocks">Texto en Bloques</string>
     <string name="textoEncriptado">Texto Encriptado</string>
     <string name="descifrar">Descifrar</string>
+    <string name="decrypt">Desencriptacion</string>
+    <string name="textoDesencriptado">Texto Decifrado</string>
 </resources>

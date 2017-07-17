@@ -9,7 +9,8 @@ public class Exponentation {
         ArrayList<Integer> arregloK = convertToArray(binario);
 
         int i;
-        double A, b;
+        int A;
+        int b;
         int t = arregloK.size() - 1;
         b = 1;
         if(k == 0){
@@ -20,12 +21,12 @@ public class Exponentation {
             b = a;
         }
         for(i = 1; i <= t ; i++){
-            A = Math.pow(A, 2) % n;
+            A = (A*A) % n;
             if(arregloK.get(i) == 1){
                 b = (A*b) % n;
             }
         }
-        return (int)b;
+        return b;
     }
     
     private static int getBinary(int numero){
