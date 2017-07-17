@@ -16,6 +16,10 @@ import josesp.splash.com.rsacriptosystem.model.Nodo;
 
 public class ManualActivity extends AppCompatActivity {
 
+    private int p;
+    private int q;
+    private int n;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,6 @@ public class ManualActivity extends AppCompatActivity {
         private int d;
 
         private final int empty = 1;
-        private final int lenghtPQ = 2;
         private final int eInvalid = 3;
         private final int noExistsInverseM = 4;
 
@@ -58,6 +61,17 @@ public class ManualActivity extends AppCompatActivity {
             stringQ = ((EditText)findViewById(R.id.editQ)).getText().toString();
             stringE = ((EditText)findViewById(R.id.editE)).getText().toString();
 
+            p = Integer.parseInt(stringP);
+            q = Integer.parseInt(stringQ);
+            e = Integer.parseInt(stringE);
+            n = p * q;
+
+            if(n < 10000){
+                Toast toast = Toast.makeText(getBaseContext(),"\t\t\t\t P y Q muy pequeños\n puede ocurrir problemas en el mensaje ",Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0 , 150);
+                toast.show();
+            }
+
             progressBar = (ProgressBar)findViewById(R.id.progressBar);
             progressBar.setVisibility(View.VISIBLE);
         }
@@ -68,10 +82,10 @@ public class ManualActivity extends AppCompatActivity {
                 return empty;
             }
 
-            int p = Integer.parseInt(stringP);
-            int q = Integer.parseInt(stringQ);
-            e = Integer.parseInt(stringE);
-            n = p * q;
+            //int p = Integer.parseInt(stringP);
+            //int q = Integer.parseInt(stringQ);
+            //e = Integer.parseInt(stringE);
+            //n = p * q;
             int phi = (p - 1) * (q - 1);
             Nodo nodo = ExtendedEuclideanAlgorithm.applyExtendedEuclideanAlgorithm(phi,e);
 
@@ -118,6 +132,9 @@ public class ManualActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
             }
             else{
+                enableUI(true);
+                progressBar.setVisibility(View.INVISIBLE);
+
                 Intent intent = new Intent(getBaseContext(),KeysActivity.class);
                 intent.putExtra("n",n);
                 intent.putExtra("e",e);

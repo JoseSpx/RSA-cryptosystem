@@ -130,13 +130,13 @@
 
     <Button
         android:id="@+id/btnExit"
-        android:onClick="btnExit_onclick"
         android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_marginBottom="53dp"
         android:layout_marginStart="34dp"
         android:background="@drawable/button_manual"
-        android:text="@string/exit"
+        android:onClick="btnExit_onclick"
+        android:text="@string/MENU"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
