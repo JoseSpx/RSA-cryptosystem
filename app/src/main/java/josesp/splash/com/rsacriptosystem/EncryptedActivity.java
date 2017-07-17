@@ -17,6 +17,7 @@ public class EncryptedActivity extends AppCompatActivity {
     private ArrayList<String> textEncrypted;
     private int d;
     private int n;
+    private int e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class EncryptedActivity extends AppCompatActivity {
         textEncrypted = bundle.getStringArrayList("textEncrypted");
         n = bundle.getInt("n");
         d = bundle.getInt("d");
+        e = bundle.getInt("e");
 
         ((TextView)(findViewById(R.id.txtBlocks))).setText(convertArrayListToString(listOfblocks));
         ((TextView)(findViewById(R.id.txtTextEncrypted))).setText(convertArrayListToString(textEncrypted));
@@ -52,12 +54,14 @@ public class EncryptedActivity extends AppCompatActivity {
         for(int i = 0; i < textEncrypted.size() ; i++){
             aux = Integer.valueOf(textEncrypted.get(i));
             exponentation = Exponentation.getExponentation(aux,d,n);
-            System.out.println("Expo : "+ exponentation);
             list.add(convertTo4Digits(exponentation));
         }
 
         Intent intent = new Intent(this, DecryptedActivity.class);
         intent.putStringArrayListExtra("list",list);
+        intent.putExtra("n",n);
+        intent.putExtra("d",d);
+        intent.putExtra("e",e);
         startActivity(intent);
     }
 
@@ -71,6 +75,15 @@ public class EncryptedActivity extends AppCompatActivity {
             return "0" + n;
         }
         return n;
+    }
+
+    public void btnAnotherMessageEncrypt_onclick(View view){
+        Intent intent = new Intent(this,MessageActivity.class);
+        intent.putExtra("n",String.valueOf(n));
+        intent.putExtra("d",String.valueOf(d));
+        intent.putExtra("e",String.valueOf(e));
+        startActivity(intent);
+        finish();
     }
 
 }

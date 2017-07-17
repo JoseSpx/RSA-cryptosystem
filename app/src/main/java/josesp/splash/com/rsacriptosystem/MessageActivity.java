@@ -18,13 +18,17 @@ import josesp.splash.com.rsacriptosystem.model.Exponentation;
 public class MessageActivity extends AppCompatActivity {
 
     private ArrayList<String> characters = new ArrayList<>(Arrays.asList(
-           //0   1
-            "?"," ",
-           //2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27
+
+           //0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25
             "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-           //28 29  30  31
+           //26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43 44  45  46  47  48  49  50  51
+            "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+           //52  53  54  55  56  57  58  59  60  61  62  63
+            "1","2","3","4","5","6","7","8","9","0"," ","?",
             ".","_","-","\n",
-            "1","2","3","4","5","6","7","8","9","0"
+            "$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$",
+            "$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$",
+            "$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$","$"
     ));
 
     private int n;
@@ -40,7 +44,6 @@ public class MessageActivity extends AppCompatActivity {
         n = Integer.valueOf(bundle.getString("n"));
         d = Integer.valueOf(bundle.getString("d"));
         e = Integer.valueOf(bundle.getString("e"));
-        //System.out.println("Carac : - " + characters.get(56));
     }
 
     public void btnEncode_onclick(View view){
@@ -57,7 +60,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ArrayList<String> listOfBlocks = getListOfBlocks(message);//recorreArray(listOfBlocks);
         ArrayList<String> textEncrypted = getTextEncrypted(listOfBlocks);
-        if(listOfBlocks.get(listOfBlocks.size() - 1).equals("1")){
+        if(listOfBlocks.get(listOfBlocks.size() - 1).equals("62")){
             listOfBlocks.remove(listOfBlocks.size()-1);
         }
         Intent intent = new Intent(this, EncryptedActivity.class);
@@ -65,6 +68,7 @@ public class MessageActivity extends AppCompatActivity {
         intent.putStringArrayListExtra("textEncrypted",textEncrypted);
         intent.putExtra("n",n);
         intent.putExtra("d",d);
+        intent.putExtra("e",e);
         startActivity(intent);
 
     }
@@ -95,7 +99,7 @@ public class MessageActivity extends AppCompatActivity {
         for(i = 0; i < message.length(); i++){
             code = getCode(message.charAt(i)+"");
             if(code == -1) {
-                list.add("00");
+                list.add("63");
             }else{
                 newCode = convertToLenght2(code);
                 list.add(newCode);
@@ -106,9 +110,8 @@ public class MessageActivity extends AppCompatActivity {
 
     public ArrayList<String> getTextEncrypted(ArrayList<String> list){
         int size = list.size();
-        System.out.println("Size : " + size);
         if(size %  2 == 1){
-            list.add("01"); // espacio vacio
+            list.add("62"); // espacio vacio
         }
         int counter;
         ArrayList<String> listOfTwoBlocks = new ArrayList<>();

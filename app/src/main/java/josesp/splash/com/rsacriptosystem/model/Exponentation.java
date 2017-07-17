@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Exponentation {
 
     public static int getExponentation(int a, int k, int n){ // base, exponente , Z
-        int binario = getBinary(k);
+        String binario = getBinary(k);
         ArrayList<Integer> arregloK = convertToArray(binario);
 
         int i;
@@ -28,22 +28,23 @@ public class Exponentation {
         }
         return b;
     }
-    
-    private static int getBinary(int numero){
-        int exp=0;
-        double binario=0;
-        int digito;
-        while(numero!=0){
-                digito = numero % 2;            
-                binario = binario + digito * Math.pow(10, exp);   
-                exp++;
-                numero = numero/2;
+
+    private static String getBinary(int numero){
+        String binario = "";
+        if (numero > 0) {
+            while (numero > 0) {
+                if (numero % 2 == 0) {
+                    binario = "0" + binario;
+                } else {
+                    binario = "1" + binario;
+                }
+                numero = numero / 2;
+            }
         }
-        return (int)binario;
+        return binario;
     }
     
-    private static ArrayList<Integer> convertToArray(int number){
-        String string = String.valueOf(number);
+    private static ArrayList<Integer> convertToArray(String string){
         int size = string.length();
         int i;
         ArrayList<Integer> arreglo = new ArrayList<>();

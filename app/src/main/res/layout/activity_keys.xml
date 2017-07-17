@@ -96,7 +96,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="129dp"
         android:text="@string/claveSecreta"
-        android:textColor="@color/colorTextButton"
+        android:textColor="@color/colorBar"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblPublicKeys" />

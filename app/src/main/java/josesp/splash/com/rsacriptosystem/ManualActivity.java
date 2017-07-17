@@ -67,9 +67,6 @@ public class ManualActivity extends AppCompatActivity {
             if(stringP.isEmpty() || stringQ.isEmpty() || stringE.isEmpty()){
                 return empty;
             }
-            else if(stringP.length() != stringQ.length()){
-                return lenghtPQ;
-            }
 
             int p = Integer.parseInt(stringP);
             int q = Integer.parseInt(stringQ);
@@ -101,13 +98,6 @@ public class ManualActivity extends AppCompatActivity {
             super.onPostExecute(data);
             if(data == empty){
                 Toast toast = Toast.makeText(getBaseContext(),"Complete los datos",Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 130);
-                toast.show();
-                enableUI(true);
-                progressBar.setVisibility(View.INVISIBLE);
-            }
-            else if(data == lenghtPQ){
-                Toast toast = Toast.makeText(getBaseContext(),"Las longitudes de P y Q son diferentes",Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 130);
                 toast.show();
                 enableUI(true);

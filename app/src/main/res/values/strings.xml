@@ -28,4 +28,7 @@
     <string name="descifrar">Descifrar</string>
     <string name="decrypt">Desencriptacion</string>
     <string name="textoDesencriptado">Texto Decifrado</string>
+    <string name="salir2">SALIR</string>
+    <string name="anotherMessage">OTRO MENSAJE</string>
+    <string name="MENU">MENU</string>
 </resources>
